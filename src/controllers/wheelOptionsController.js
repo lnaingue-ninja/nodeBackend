@@ -1,4 +1,5 @@
 var WheelOptions = require('../models/rwpoints-WheelOptions');
+sequelize = require('../models/dbRewardsPrize');
 
 const controller = {}
 

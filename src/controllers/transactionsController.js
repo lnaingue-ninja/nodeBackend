@@ -1,4 +1,5 @@
 var Transactions = require('../models/rwprize-Transactions');
+var sequelize = require('../models/dbRewardsPrize');
 
 const controller = {}
 

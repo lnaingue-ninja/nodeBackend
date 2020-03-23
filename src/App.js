@@ -17,6 +17,16 @@ const contactRouters = require('./routes/contactsRoute');
 //Route
 app.use('/contacts', contactRouters);
 
+// importing routes
+const pointsRouters = require('./routes/pointsStorageRoute');
+//Route
+app.use('/pointsstorage', pointsRouters);
+
+// importing routes
+const rewardsTransRouters = require('./routes/rewardsTransactionsRoute');
+//Route
+app.use('/rewardstransactions', rewardsTransRouters);
+
 
 app.use('/test', (req, res) => {
   res.send("Test route");

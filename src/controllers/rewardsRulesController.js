@@ -1,4 +1,5 @@
 var RewardsRules = require('../models/rwpoints-RewardsRules');
+var sequelize = require('../models/dbRewardsPoints');
 
 const controller = {}
 

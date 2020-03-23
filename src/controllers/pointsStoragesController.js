@@ -1,25 +1,72 @@
 var PointsStorages = require('../models/rwpoints-PointsStorages');
+var sequelize = require('../models/dbRewardsPoints');
 
 const controller = {}
 
-controller.testdata = async ( req, res) => {
-
+// total points (all users)
+controller.totalusers= async ( req, res) => {
   const response = await sequelize.sync().then(function() {
-     const data =  PointsStorages.findAll()
+     const data =  PointsStorages.count();
      return data;
   })
   .catch(err => {
     return err;
   });
-  res.json(response)
-
+  res.json(response);
 }
 
+controller.maximumpoints= async ( req, res) => {
+  const response = await sequelize.sync().then(function() {
+     const data =  PointsStorages.findAll({
+       attributes : [ [sequelize.fn('MAX', sequelize.col('balance')),'max'] ]
+     });
+     return data;
+  })
+  .catch(err => {
+    return err;
+  });
+  res.json(response);
+}
+
+controller.minimumpoints= async ( req, res) => {
+  const response = await sequelize.sync().then(function() {
+     const data =  PointsStorages.findAll({
+       attributes : [ [sequelize.fn('MIN', sequelize.col('balance')),'min'] ]
+     });
+     return data;
+  })
+  .catch(err => {
+    return err;
+  });
+  res.json(response);
+}
+
+controller.averagepoints= async ( req, res) => {
+  const response = await sequelize.sync().then(function() {
+     const data =  PointsStorages.findAll({
+       attributes : [ [sequelize.fn('AVG', sequelize.col('balance')),'average_value'] ]
+     });
+     return data;
+  })
+  .catch(err => {
+    return err;
+  });
+  res.json(response);
+}
+
+controller.medianpoint = async ( req, res) => {
+  sequelize.query('CALL getMedianPoint();').then(function(response){
+       return res.json(response) ;
+      }).error(function(err){
+         return res.json(err);
+       });
+}
+
+
+
 controller.list = async ( req, res) => {
-
     const data = await PointsStorages.findAll();
-    res.json(data)
-
+    res.json(data);
 }
 
 controller.test = (req,res) => {

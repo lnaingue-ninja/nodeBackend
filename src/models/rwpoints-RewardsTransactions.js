@@ -12,7 +12,7 @@ var RewardsTransactions = dbrewardspoints.define('rewards_transactions', {
   action: Sequelize.STRING,
   deviceId: Sequelize.STRING,
   publication : Sequelize.STRING,
-  points: Sequelize.INT,
+  points: Sequelize.INTEGER,
   videoId: Sequelize.STRING,
   createdAt: Sequelize.DATE,
   updatedAt: Sequelize.DATE,

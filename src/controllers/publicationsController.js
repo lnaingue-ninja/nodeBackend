@@ -1,4 +1,5 @@
 var Publications = require('../models/rwpoints-Publications');
+var sequelize = require('../models/dbRewardsPoints');
 
 const controller = {}
 

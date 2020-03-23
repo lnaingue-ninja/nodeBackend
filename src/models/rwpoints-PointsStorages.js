@@ -1,7 +1,7 @@
 var Sequelize = require('sequelize');
-var dbrewardsprize = require('./dbRewardsPrize');
+var dbrewardspoints = require('./dbRewardsPoints');
 
-var PointsStorages = dbrewardsprize.define('points_storages', {
+var PointsStorages = dbrewardspoints.define('points_storages', {
   id: {
     type: Sequelize.INTEGER,
     primaryKey: true,
@@ -10,7 +10,7 @@ var PointsStorages = dbrewardsprize.define('points_storages', {
   },
   mySPHId: Sequelize.STRING,
   publication : Sequelize.STRING,
-  balance: Sequelize.INT,
+  balance: Sequelize.INTEGER,
   createdAt: Sequelize.DATE,
   updatedAt: Sequelize.DATE,
 },
